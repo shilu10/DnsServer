@@ -19,14 +19,20 @@ iptables file is not require if you don't use any kind of firewall in your host
 
 2.go to /etc/resolv.Add the below line 
 -nameserver 192.168.0.0(your ipaddress)
+
 -To see your ipaddress use ifconfig in Bashshell
 -nameserver by default . if you are using anykind of wireless connection for accessing the internet .Then that device ipaddress will be presented there by 
 default.This will be done by the NetworkManager Daemon in ubuntu
+
 -Now your host will be acting as a DnsServer for you.If you try to access the internet . You will get some connection error,because our host machine donot know any ipaddress of Authoritive Server ipaddress
+
 -Setting a cache nameserver
     -It is not a authoritative server for any domain,it is just a cache server for your operating system.So it don't need do the dns resolution for same website each and everytime,but there will be timelimit for each cache ipaddress in caching server
+    
     -By default BIND will refer to the root server for the dns queries ,we can also give the another destination type which is FORWARDER,where the public dnsserver will be presented such as google dnsserver or cloudflare dnsserver,both of these are the mainly used public dnsserver,and those server would have cache your required or requested domain.Or it will query the root server for the ipaddress.
+    
     -Add the below lines in the /etc/named.conf
+    
     
    <p>
                         // Provided by Red Hat bind package to configure the ISC BIND named(8) DNS
@@ -75,5 +81,6 @@ default.This will be done by the NetworkManager Daemon in ubuntu
   -Now restart the named Daemon
       systemctl enable named
       systemctl start named
+      
   -You can check whether caching nameserver working or not by using the dig comment in the terminal
 
