@@ -85,6 +85,7 @@ default.This will be done by the NetworkManager Daemon in ubuntu
       
   -You can check whether caching nameserver working or not by using the dig comment in the terminal
   
+  
 <h2> Primary Namerserver </h2>
   -Setting a Primary Namerserver is simple,but the files name will be differ for each linux distro.Make sure to google it.
   
@@ -120,6 +121,9 @@ default.This will be done by the NetworkManager Daemon in ubuntu
 
     </p>
     
+    
+    
+    <p>
     -You should always provided a Fully Qualified Domain Name (FQDN).More about url https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwifgeTTppj1AhW5TGwGHcClBt0QFnoECAsQAw&url=https%3A%2F%2Fdeveloper.mozilla.org%2Fen-US%2Fdocs%2FLearn%2FCommon_questions%2FWhat_is_a_URL&usg=AOvVaw2JONnAJ-2axTgagyOUfhK4
     
     -Add the forward zone files to named.conf
@@ -130,4 +134,6 @@ default.This will be done by the NetworkManager Daemon in ubuntu
                                 type master;
                                 file "example.com.zone";
                         };
+                        </p>
+                        
                         </p>
