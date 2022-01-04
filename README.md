@@ -8,6 +8,7 @@ https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ve
 <h3> what is DnsServer? </h3> 
 <p>
   In our day to day life we are using the dns and dnserver all the time.Our devices(Servers,Computes,Cellphones) are talking to each other using their ipaddress.if you want to get any website to load in tour browser you need its ipaddress.But as a human it is impossible to remember everything.Or we would use some old techniques like noting down the name and mobile number of the person in the phonebook :)
+  
   So for the easy purpose each and every website name and their ipaddress will be hosted in Dnserver.We can think that as a common phonebook for everyone .so they can use it .when we type something in the browser first it will check in the /etc/hosts file in the ubuntu to see whether the ipaddress of that domain exist or not,it wont be until you manually editting the file.And after that it will see the /etc/resolv.conf file for the destination dnsserver ipaddress.
 
  <h2> We will set up caching nameserver and as well as primary name server</h2>
@@ -42,7 +43,7 @@ default.This will be done by the NetworkManager Daemon in ubuntu
                         //
                         
                         options {
-                                listen-on port 53 { 127.0.0.1; 192.168.0.203; };
+                                listen-on port 53 { 127.0.0.1; your_private_ipadrress; };
                         //      listen-on-v6 port 53 { ::1; };
                                 forwarders { 8.8.8.8; 8.8.4.4; };
                                 directory       "/var/named";
@@ -83,4 +84,50 @@ default.This will be done by the NetworkManager Daemon in ubuntu
       systemctl start named
       
   -You can check whether caching nameserver working or not by using the dig comment in the terminal
+  
+<h2> Primary Namerserver </h2>
+  -Setting a Primary Namerserver is simple,but the files name will be differ for each linux distro.Make sure to google it.
+  
+  -The two new files you'll create are the forward and reverse zone files, which you'll place in the /var/named directory. This location is specified by the "directory" directive in the named.conf configuration file
+  
+  <h5> Create a Forward Zone File </h5>
+  
+    - The two new files you'll create are the forward and reverse zone files, which you'll place in the /var/named directory. This location is specified by the "directory" directive in the named.conf configuration file
+    
+    -Create a basic forward zone file, /var/named/example.com.zone, and add the following lines to it. Your zone file should look like the sample zone file in Listing 3, below, when you're finished.
+      <p>
+                        -; Authoritative data for example.com zone
+                    ;
+                    $TTL 1D
+                    @   IN SOA  epc.example.com   root.epc.example.com. (
+                                                           2017031301      ; serial
+                                                           1D              ; refresh
+                                                           1H              ; retry
+                                                           1W              ; expire
+                                                           3H )            ; minimum
 
+                    $ORIGIN         example.com.
+                    example.com.            IN      NS      yourdomainname
+                    epc                     IN      A       127.0.0.1
+                    server                  IN      A       your_webserver_ip
+                    www                     IN      CNAME   server
+                    mail                    IN      CNAME   server
+                    test1                   IN      A       192.168.25.21
+                    t1                      IN      CNAME   test1
+                    
+                    ; Mail server MX record
+                    example.com.            IN      MX      10      mail.example.com.
+
+    </p>
+    
+    -You should always provided a Fully Qualified Domain Name (FQDN).More about url https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwifgeTTppj1AhW5TGwGHcClBt0QFnoECAsQAw&url=https%3A%2F%2Fdeveloper.mozilla.org%2Fen-US%2Fdocs%2FLearn%2FCommon_questions%2FWhat_is_a_URL&usg=AOvVaw2JONnAJ-2axTgagyOUfhK4
+    
+    -Add the forward zone files to named.conf
+
+    -Before your DNS server will work, however, you need to create an entry in /etc/named.conf that will point to your new zone file. Add the following lines below the entry for the top-level hints zone but before the "include" lines.
+      <p>
+                        zone "example.com" IN {
+                                type master;
+                                file "example.com.zone";
+                        };
+                        </p>
