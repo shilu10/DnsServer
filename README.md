@@ -91,7 +91,7 @@ default.This will be done by the NetworkManager Daemon in ubuntu
     
     -Create a basic forward zone file, /var/named/example.com.zone, and add the following lines to it. Your zone file should look like the sample zone file in Listing 3, below, when you're finished.
      
-   Markup :  `code()`
+   ```
                         -; Authoritative data for example.com zone
                     ;
                     $TTL 1D
@@ -118,7 +118,7 @@ default.This will be done by the NetworkManager Daemon in ubuntu
     
     
     
-
+```
     
     -You should always provided a Fully Qualified Domain Name (FQDN).More about url https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwifgeTTppj1AhW5TGwGHcClBt0QFnoECAsQAw&url=https%3A%2F%2Fdeveloper.mozilla.org%2Fen-US%2Fdocs%2FLearn%2FCommon_questions%2FWhat_is_a_URL&usg=AOvVaw2JONnAJ-2axTgagyOUfhK4
     
