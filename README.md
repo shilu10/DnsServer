@@ -90,9 +90,9 @@ default.This will be done by the NetworkManager Daemon in ubuntu
     - The two new files you'll create are the forward and reverse zone files, which you'll place in the /var/named directory. This location is specified by the "directory" directive in the named.conf configuration file
     
     -Create a basic forward zone file, /var/named/example.com.zone, and add the following lines to it. Your zone file should look like the sample zone file in Listing 3, below, when you're finished.
-    <br>
-    <br/>
-     
+   <br>
+   ok
+   <br/>
    ```
                         -; Authoritative data for example.com zone
                     ;
