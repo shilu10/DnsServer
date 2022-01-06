@@ -205,12 +205,12 @@ default.This will be done by the NetworkManager Daemon in ubuntu
 * Add the reverse zone to named.conf:
 
     
-  ``` 
+ 
         zone    "25.168.192.in-addr.arpa" IN {
        type master;
        file "example.com.rev";
         };
-  ```
+  
  
     ***
  
