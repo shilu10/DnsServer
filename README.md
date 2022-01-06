@@ -179,40 +179,39 @@ default.This will be done by the NetworkManager Daemon in ubuntu
 
   ***
  
-  ```
-      ; Authoritative data for example.com  reverse zone
-      ;
-      $TTL 1D
-      @   IN SOA  test1.example.com  example.com. (
+   ; Authoritative data for example.com  reverse zone
+   ;
+   $TTL 1D
+   @   IN SOA  test1.example.com  example.com. (
                                               2017031501      ; serial
                                               1D              ; refresh
                                               1H              ; retry
                                               1W              ; expire
                                               3H )            ; minimum
 
-      @       IN      NS      epc.example.com.
-      example.com.    IN      NS      epc.example.com.
-      1               IN      PTR     mail.example.com.
-      1               IN      PTR     server.example.com.
-      21              IN      PTR     test1.example.com.
-      22              IN      PTR     test2.example.com.
-      23              IN      PTR     test3.example.com.
-      24              IN      PTR     test4.example.com.
-  ```
+   @       IN      NS      epc.example.com.
+   example.com.    IN      NS      epc.example.com.
+   1               IN      PTR     mail.example.com.
+   1               IN      PTR     server.example.com.
+   21              IN      PTR     test1.example.com.
+   22              IN      PTR     test2.example.com.
+   23              IN      PTR     test3.example.com.
+   24              IN      PTR     test4.example.com.
+ 
 
-    ***
+  ***
 
 * Add the reverse zone to named.conf:
 
-    
+  ***    
  
-        zone    "25.168.192.in-addr.arpa" IN {
-       type master;
-       file "example.com.rev";
-        };
+   zone    "25.168.192.in-addr.arpa" IN {
+   type master;
+   file "example.com.rev";
+    };
   
  
-    ***
+   
  
  *  systemctl reload named
  *  And use the dig command to see the result
