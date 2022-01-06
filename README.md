@@ -87,16 +87,13 @@ default.This will be done by the NetworkManager Daemon in ubuntu
   
   <h5> Create a Forward Zone File </h5>
   
-    - The two new files you'll create are the forward and reverse zone files, which you'll place in the /var/named directory. This location is specified by the "directory" directive in the named.conf configuration file
+  - The two new files you'll create are the forward and reverse zone files, which you'll place in the /var/named directory. This location is specified by the "directory" directive in the named.conf configuration file
     
-    -Create a basic forward zone file, /var/named/example.com.zone, and add the following lines to it. Your zone file should look like the sample zone file in Listing 3, below, when you're finished.
-   <br>
-   ok
-   <br/>
-   ```
-                        -; Authoritative data for example.com zone
-                    ;
-                    $TTL 1D
+  -Create a basic forward zone file, /var/named/example.com.zone, and add the following lines to it. Your zone file should look like the sample zone file in Listing 3, below, when you're finished.
+   
+  - ; Authoritative data for example.com zone
+     ;
+     $TTL 1D
                     @   IN SOA  epc.example.com   root.epc.example.com. (
                                                            2017031301      ; serial
                                                            1D              ; refresh
@@ -116,11 +113,6 @@ default.This will be done by the NetworkManager Daemon in ubuntu
                     ; Mail server MX record
                     example.com.            IN      MX      10      mail.example.com.
 
-
-    
-    
-    
-```
     
     -You should always provided a Fully Qualified Domain Name (FQDN).More about url https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwifgeTTppj1AhW5TGwGHcClBt0QFnoECAsQAw&url=https%3A%2F%2Fdeveloper.mozilla.org%2Fen-US%2Fdocs%2FLearn%2FCommon_questions%2FWhat_is_a_URL&usg=AOvVaw2JONnAJ-2axTgagyOUfhK4
     
