@@ -36,12 +36,6 @@ default.This will be done by the NetworkManager Daemon in ubuntu
     
     
    <p>
-                        // Provided by Red Hat bind package to configure the ISC BIND named(8) DNS
-                        // server as a caching only name server (as a localhost DNS resolver only).
-                        // See /usr/share/doc/bind*/sample/ for example named configuration files.
-                        //
-                        //
-                        
                         options {
                                 listen-on port 53 { 127.0.0.1; your_private_ipadrress; };
                         //      listen-on-v6 port 53 { ::1; };
@@ -124,6 +118,21 @@ default.This will be done by the NetworkManager Daemon in ubuntu
     
     
     <p>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     -You should always provided a Fully Qualified Domain Name (FQDN).More about url https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwifgeTTppj1AhW5TGwGHcClBt0QFnoECAsQAw&url=https%3A%2F%2Fdeveloper.mozilla.org%2Fen-US%2Fdocs%2FLearn%2FCommon_questions%2FWhat_is_a_URL&usg=AOvVaw2JONnAJ-2axTgagyOUfhK4
     
     -Add the forward zone files to named.conf
