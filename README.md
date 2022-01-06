@@ -177,7 +177,7 @@ default.This will be done by the NetworkManager Daemon in ubuntu
 * A reverse zone for your domain will provide the ability to do reverse lookups. Many organizations do not do these internally, but reverse lookups can be helpful in doing problem determination. Many spam fighting configurations, such as SpamAssassin, look for reverse lookups to verify valid email servers.
 * Create the reverse zone file, /var/named/example.com.rev
 
-  ***
+  ```
  
                            ; Authoritative data for example.com  reverse zone
                            ;
@@ -199,11 +199,11 @@ default.This will be done by the NetworkManager Daemon in ubuntu
                            24              IN      PTR     test4.example.com.
  
 
-  ***
+  ```
 
 * Add the reverse zone to named.conf:
 
-  ***    
+  ```  
  
                            zone    "25.168.192.in-addr.arpa" IN {
                            type master;
@@ -211,7 +211,7 @@ default.This will be done by the NetworkManager Daemon in ubuntu
                             };
 
 
-   
+   ```
  
  *  systemctl reload named
  *  And use the dig command to see the result
