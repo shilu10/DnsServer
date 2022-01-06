@@ -139,7 +139,7 @@ default.This will be done by the NetworkManager Daemon in ubuntu
  <h3> Using the root name servers </h3>
  * Notice that the root name servers are given as the authoritative servers for the Amazon.com lookup. But remember you're using the Google public name servers as forwarders. Now comment out the forwarders line in named.conf and restart named. Run the above commands again to compare the results that are returned.
   ```
-                            # dig www.amazon.com    
+                             
 
                           ; <<>> DiG 9.10.4-P6-RedHat-9.10.4-4.P6.fc25 <<>> www.amazon.com
                           ;; global options: +cmd
@@ -172,3 +172,35 @@ default.This will be done by the NetworkManager Daemon in ubuntu
                           ;; MSG SIZE  rcvd: 306
                           ''
 ```
+<h3> Creating the reverse zone file </h3>
+* A reverse zone for your domain will provide the ability to do reverse lookups. Many organizations do not do these internally, but reverse lookups can be helpful in doing problem determination. Many spam fighting configurations, such as SpamAssassin, look for reverse lookups to verify valid email servers.
+* Create the reverse zone file, /var/named/example.com.rev
+```
+      ; Authoritative data for example.com  reverse zone
+      ;
+      $TTL 1D
+      @   IN SOA  test1.example.com  example.com. (
+                                              2017031501      ; serial
+                                              1D              ; refresh
+                                              1H              ; retry
+                                              1W              ; expire
+                                              3H )            ; minimum
+
+      @       IN      NS      epc.example.com.
+      example.com.    IN      NS      epc.example.com.
+      1               IN      PTR     mail.example.com.
+      1               IN      PTR     server.example.com.
+      21              IN      PTR     test1.example.com.
+      22              IN      PTR     test2.example.com.
+      23              IN      PTR     test3.example.com.
+      24              IN      PTR     test4.example.com.
+```
+* Add the reverse zone to named.conf:
+``` 
+        zone    "25.168.192.in-addr.arpa" IN {
+       type master;
+       file "example.com.rev";
+        };
+ ```
+ *  systemctl reload named
+ *  And use the dig command to see the result
