@@ -80,7 +80,7 @@ default.This will be done by the NetworkManager Daemon in ubuntu
   -You can check whether caching nameserver working or not by using the dig comment in the terminal
   
   
-<h2> Primary Namerserver </h2>
+<h4> Primary Namerserver </h4>
   -Setting a Primary Namerserver is simple,but the files name will be differ for each linux distro.Make sure to google it.
   
   -The two new files you'll create are the forward and reverse zone files, which you'll place in the /var/named directory. This location is specified by the "directory" directive in the named.conf configuration file
@@ -91,7 +91,7 @@ default.This will be done by the NetworkManager Daemon in ubuntu
     
     -Create a basic forward zone file, /var/named/example.com.zone, and add the following lines to it. Your zone file should look like the sample zone file in Listing 3, below, when you're finished.
      
-     <h5>
+   
                         -; Authoritative data for example.com zone
                     ;
                     $TTL 1D
@@ -114,7 +114,7 @@ default.This will be done by the NetworkManager Daemon in ubuntu
                     ; Mail server MX record
                     example.com.            IN      MX      10      mail.example.com.
 
-</h5>
+
     
     
     
@@ -125,11 +125,10 @@ default.This will be done by the NetworkManager Daemon in ubuntu
     -Add the forward zone files to named.conf
 
     -Before your DNS server will work, however, you need to create an entry in /etc/named.conf that will point to your new zone file. Add the following lines below the entry for the top-level hints zone but before the "include" lines.
-      <p>
+     
+     
                         zone "example.com" IN {
                                 type master;
                                 file "example.com.zone";
                         };
-                        </p>
-                        
-                        </p>
+                      
