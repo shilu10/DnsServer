@@ -172,8 +172,9 @@ default.This will be done by the NetworkManager Daemon in ubuntu
                           ;; MSG SIZE  rcvd: 306
                           ''
   ```
-    ***
-<h3> Creating the reverse zone file </h3>
+   ***
+  <h3> Creating the reverse zone file </h3>
+  
 * A reverse zone for your domain will provide the ability to do reverse lookups. Many organizations do not do these internally, but reverse lookups can be helpful in doing problem determination. Many spam fighting configurations, such as SpamAssassin, look for reverse lookups to verify valid email servers.
 * Create the reverse zone file, /var/named/example.com.rev
 
@@ -201,7 +202,7 @@ default.This will be done by the NetworkManager Daemon in ubuntu
 
   ```
 
-* Add the reverse zone to named.conf:
+  * Add the reverse zone to named.conf:
 
   ```  
  
