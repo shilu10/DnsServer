@@ -91,7 +91,7 @@ default.This will be done by the NetworkManager Daemon in ubuntu
     
     -Create a basic forward zone file, /var/named/example.com.zone, and add the following lines to it. Your zone file should look like the sample zone file in Listing 3, below, when you're finished.
      
-   
+   Markup :  `code()`
                         -; Authoritative data for example.com zone
                     ;
                     $TTL 1D
