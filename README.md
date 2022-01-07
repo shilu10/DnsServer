@@ -137,6 +137,7 @@ default.This will be done by the NetworkManager Daemon in ubuntu
  * Use dig command to check
  
  <h3> Using the root name servers </h3>
+ 
  * Notice that the root name servers are given as the authoritative servers for the Amazon.com lookup. But remember you're using the Google public name servers as forwarders. Now comment out the forwarders line in named.conf and restart named. Run the above commands again to compare the results that are returned.
   ```
                              
@@ -173,6 +174,8 @@ default.This will be done by the NetworkManager Daemon in ubuntu
                           ''
   ```
    ***
+   
+   
   <h3> Creating the reverse zone file </h3>
   
 * A reverse zone for your domain will provide the ability to do reverse lookups. Many organizations do not do these internally, but reverse lookups can be helpful in doing problem determination. Many spam fighting configurations, such as SpamAssassin, look for reverse lookups to verify valid email servers.
