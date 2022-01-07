@@ -205,7 +205,10 @@ default.This will be done by the NetworkManager Daemon in ubuntu
 
   ```
 
-  * Add the reverse zone to named.conf:
+ 
+ * Add the reverse zone to named.conf:
+
+
 
   ```  
  
